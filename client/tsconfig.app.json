@@ -5,13 +5,14 @@
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
         "module": "ESNext",
         "skipLibCheck": true,
-        "baseUrl": "src",
+        "baseUrl": ".",
         "removeComments": true,
         "paths": {
             "@/*": ["./src/*"],
             "@styles/*": ["./src/styles/*"],
             "@views/*": ["./src/views/*"],
-            "@components/*": ["./src/components/*"]
+            "@components/*": ["./src/components/*"],
+            "@icons/*": ["./src/icons/*"]
         },
 
         /* Bundler mode */
