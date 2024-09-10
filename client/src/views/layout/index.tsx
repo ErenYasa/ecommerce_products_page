@@ -1,5 +1,10 @@
-import { ILayoutProps } from "./layout.defs";
+import Listing from "../listing";
+import { LayoutStyle } from "./styled";
 
-export default function Layout({ children }: ILayoutProps) {
-    return <main>{children}</main>;
+export default function Layout() {
+    return (
+        <LayoutStyle>
+            <Listing />
+        </LayoutStyle>
+    );
 }
