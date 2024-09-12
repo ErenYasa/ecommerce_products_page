@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export const SidebarFilterStyle = styled.div`
+export const SidebarFilterStyle = styled.aside`
+    position: sticky;
+    top: 2rem;
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding-inline: 1rem;
+    height: calc(100vh - 237px);
+
     & > *:not(:last-child) {
-        box-shadow: 0 0.1rem ${({ theme }) => theme.colors.primaryGrey};
+        border-bottom: 0.1rem solid ${({ theme }) => theme.colors.primaryGrey};
     }
 `;
 
@@ -16,5 +19,3 @@ export const Top = styled.div`
     gap: 2rem;
     padding-bottom: 1rem;
 `;
-
-export const StockFilter = styled.div``;

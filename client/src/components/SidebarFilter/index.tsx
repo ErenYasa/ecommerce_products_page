@@ -1,21 +1,32 @@
-import { SidebarFilterStyle, StockFilter, Top } from "./styled";
-import ListFilter from "../ListFilter";
+import { SidebarFilterStyle, Top } from "./styled";
+import ListFilter from "../FilterElements/ListFilter";
+import CheckboxList from "../CheckboxList";
+import StockFilter from "../FilterElements/StockFilter";
+
+const BRANDS = [
+    "Brand 1",
+    "Brand 2",
+    "Brand 3",
+    "Brand 4",
+    "Brand 5",
+    "Brand 6",
+    "Brand 7",
+    "Brand 8",
+    "Brand 9",
+    "Brand 10",
+];
 
 export function SidebarFilter() {
     return (
         <SidebarFilterStyle>
             <Top>
-                <StockFilter>Hide out of stock items</StockFilter>
+                <StockFilter />
             </Top>
-            <ListFilter open title="Brands">
-                <>
-                    <div>Brand 1</div>
-                    <div>Brand 2</div>
-                    <div>Brand 3</div>
-                    <div>Brand 4</div>
-                    <div>Brand 5</div>
-                </>
-            </ListFilter>
+            {BRANDS.length > 0 && (
+                <ListFilter open title="Brands">
+                    <CheckboxList data={BRANDS} />
+                </ListFilter>
+            )}
             <ListFilter title="Colors">
                 <>
                     <div>Color 1</div>
