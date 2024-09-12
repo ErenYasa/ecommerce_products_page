@@ -6,5 +6,5 @@ export const HeaderContainer = styled.header`
     width: 100%;
     padding-block: 1.6rem;
     font-size: ${(props) => props.theme.typography.size.lg};
-    box-shadow: 0 1px ${(props) => props.theme.colors.primaryGrey};
+    box-shadow: 0 0.1rem ${(props) => props.theme.colors.primaryGrey};
 `;

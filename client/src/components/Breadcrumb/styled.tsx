@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const BreadcrumbContainer = styled.div`
     display: flex;
@@ -9,9 +9,14 @@ export const BreadcrumbContainer = styled.div`
 export const Item = styled.span``;
 
 export const ItemLink = styled.a<{ active: boolean }>`
-    pointer-events: ${(props) => props.active && "none"};
+    ${(props) =>
+        props.active &&
+        css`
+            pointer-events: none;
+        `};
     font-weight: ${(props) =>
         props.active && props.theme.typography.weight.medium};
+
     &:hover {
         text-decoration: underline;
     }

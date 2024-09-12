@@ -12,7 +12,9 @@
             "@styles/*": ["./src/styles/*"],
             "@views/*": ["./src/views/*"],
             "@components/*": ["./src/components/*"],
-            "@icons/*": ["./src/icons/*"]
+            "@hooks/*": ["./src/hooks/*"],
+            "@icons/*": ["./src/icons/*"],
+            "@types/*": ["./src/types/*"]
         },
 
         /* Bundler mode */

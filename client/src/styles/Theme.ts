@@ -48,4 +48,19 @@ export const theme: DefaultTheme = {
         xl: "1280px",
         xxl: "1536px",
     },
+    gridBreakpoints: {
+        xs: "0",
+        sm: "576px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        xxl: "1536px",
+    },
+    gridColumns: 12,
+    gridGaps: {
+        0: "0",
+        1: "1rem",
+        2: "2rem",
+        3: "3rem",
+    },
 };
