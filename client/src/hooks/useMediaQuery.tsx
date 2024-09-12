@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 
-export function useMediaQuery(type: string = "max", query: string = "576px") {
-    const validQueryPattern = `(${type}-width: ${query})`;
-
-    const [matches, setMatches] = useState(
-        window.matchMedia(validQueryPattern).matches
-    );
+export function useMediaQuery(query: string = "(max-width: 576px)") {
+    const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
     useEffect(() => {
-        const media = window.matchMedia(validQueryPattern);
+        const media = window.matchMedia(query);
 
         if (media.matches !== matches) setMatches(media.matches);
 

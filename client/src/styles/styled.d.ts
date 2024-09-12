@@ -8,12 +8,22 @@ declare module "styled-components" {
             dark: string;
             light: string;
             textLight: string;
-            SecondaryGrey: string;
+            secondaryGrey: string;
             primaryGrey: string;
             placeholderGrey: string;
+            switchBg: string;
             darkGreyText: string;
             success: string;
             error: string;
+        };
+        opacityCodes: {
+            "90%": string;
+            "80%": string;
+            "70%": string;
+            "60%": string;
+            "50%": string;
+            "40%": string;
+            "20%": string;
         };
         typography: {
             size: {

@@ -11,7 +11,7 @@ export const MobileFilterStyle = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    background-color: ${(props) => props.theme.colors.SecondaryGrey};
+    background-color: ${(props) => props.theme.colors.secondaryGrey};
     border-radius: ${(props) => props.theme.borderRadius.sm};
     /* border-bottom: 0.1rem solid ${(props) =>
         props.theme.colors.primaryGrey}; */
