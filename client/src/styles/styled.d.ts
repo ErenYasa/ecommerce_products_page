@@ -49,5 +49,20 @@ declare module "styled-components" {
             xl: string;
             xxl: string;
         };
+        gridBreakpoints: {
+            xs: string;
+            sm: string;
+            md: string;
+            lg: string;
+            xl: string;
+            xxl: string;
+        };
+        gridColumns: 12;
+        gridGaps: {
+            0: string;
+            1: string;
+            2: string;
+            3: string;
+        };
     }
 }
