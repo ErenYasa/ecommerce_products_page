@@ -8,32 +8,40 @@ import {
 } from "./styled";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import StockFilter from "../FilterElements/StockFilter";
-import { ButtonPrimary } from "../Buttons";
+import { Button } from "../Buttons";
 import { IconFilter } from "@/icons";
 import DropdownList from "../DropdownList";
+import ProductCard from "../ProductCard";
 
 export default function Products() {
     const isMedium = useMediaQuery(
-        `(min-width: ${ScreenSizes.SM}) and (max-width: ${ScreenSizes.LG})`
+        `(min-width: ${ScreenSizes.SM}) and (max-width: 1023px)`
     );
+    const isMobileOut = useMediaQuery("(min-width: 576px)");
 
     return (
         <ProductsStyle>
             <ProductsTop>
                 {isMedium && (
                     <ProductsTopLeft>
-                        <ButtonPrimary kind="dark">
+                        <Button kind="dark">
                             <IconFilter width="18" height="19" />
                             Filters
-                        </ButtonPrimary>
+                        </Button>
                         <StockFilter />
                     </ProductsTopLeft>
                 )}
                 <ProductsTopRight>
-                    <DropdownList />
+                    {isMobileOut && <DropdownList />}
                 </ProductsTopRight>
             </ProductsTop>
-            <ProductsList>LIST</ProductsList>
+            <ProductsList>
+                <ProductCard isDiscount={true} />
+                <ProductCard isDiscount={false} />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </ProductsList>
         </ProductsStyle>
     );
 }

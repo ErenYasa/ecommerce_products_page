@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { device } from "@/styles/Breakpoints";
-import { MContainerClass } from "@/styles/Mixins";
+import { MContainer } from "@/styles/Mixins";
+import { SizeTypes } from "@/types";
 
 export const LayoutStyle = styled.main`
-    ${MContainerClass}
+    ${MContainer(SizeTypes.XL)}
     position: relative;
     height: 100%;
     padding: 3rem 1.5rem 1.5rem;
