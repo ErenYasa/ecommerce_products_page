@@ -119,6 +119,13 @@ textarea {
 input[type="text"] {
     border: none;
 }
+input, select {
+    appearance: none;
+}
+select {
+    outline: none;
+    border: none;
+}
 /* a {
     color: $c-dark;
 } */
