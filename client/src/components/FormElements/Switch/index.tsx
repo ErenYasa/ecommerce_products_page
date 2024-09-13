@@ -12,7 +12,7 @@ type CheckboxProps = {
     defaultChecked?: boolean;
     disabled?: boolean;
     text?: string;
-    size?: string;
+    size?: "sm" | "md" | "lg";
     checked?: boolean;
     kind?: TKindTypes;
 };

@@ -54,8 +54,6 @@ export const Checkmark = styled.span`
 `;
 
 export const Input = styled.input.attrs({ type: "checkbox" })`
-    appearance: none;
-    outline: 0;
     &:checked ~ ${Checkmark}:after {
         display: block;
     }

@@ -10,6 +10,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import StockFilter from "../FilterElements/StockFilter";
 import { ButtonPrimary } from "../Buttons";
 import { IconFilter } from "@/icons";
+import DropdownList from "../DropdownList";
 
 export default function Products() {
     const isMedium = useMediaQuery(
@@ -28,7 +29,9 @@ export default function Products() {
                         <StockFilter />
                     </ProductsTopLeft>
                 )}
-                <ProductsTopRight>RIGHT</ProductsTopRight>
+                <ProductsTopRight>
+                    <DropdownList />
+                </ProductsTopRight>
             </ProductsTop>
             <ProductsList>LIST</ProductsList>
         </ProductsStyle>
