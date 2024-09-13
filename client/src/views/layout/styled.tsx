@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { device } from "@/styles/Breakpoints";
 import { MContainer } from "@/styles/Mixins";
-import { SizeTypes } from "@/types";
+import { ScreenSizeTypes } from "@/types";
 
 export const LayoutStyle = styled.main`
-    ${MContainer(SizeTypes.XL)}
+    ${MContainer(ScreenSizeTypes.XL)}
     position: relative;
     height: 100%;
     padding: 3rem 1.5rem 1.5rem;

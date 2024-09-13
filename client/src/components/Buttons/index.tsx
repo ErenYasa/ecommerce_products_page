@@ -6,7 +6,7 @@ export const Button = (props: ButtonProps) => (
     <ButtonStyle
         variant={props.variant || VariantTypes.DEFAULT}
         kind={props.kind || KindTypes.PRIMARY}
-        fullwidth={props.fullwidth}
+        fullwidth={props.fullwidth ? "true" : ""}
         disabled={props.disabled}
         onClick={props.onClick}
     >

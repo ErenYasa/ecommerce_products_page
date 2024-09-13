@@ -32,7 +32,10 @@ export function Breadcrumb() {
                             <IconRightChevron width={8} height={10} />
                         </Separator>
                     )}
-                    <ItemLink href={item.url} active={item.isActive}>
+                    <ItemLink
+                        href={item.url}
+                        active={item.isActive ? "true" : ""}
+                    >
                         {item.name}
                     </ItemLink>
                 </Item>
