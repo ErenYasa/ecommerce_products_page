@@ -1,10 +1,6 @@
 import { css, styled } from "styled-components";
-import {
-    IGlobalVariantHandler,
-    IVariantAndKindTypes,
-    KindTypes,
-    VariantTypes,
-} from "@/types";
+import { IGlobalVariantHandler, KindTypes, VariantTypes } from "@/types";
+import { IbuttonStyle } from "./buttons.defs";
 
 const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
     switch (variant) {
@@ -13,6 +9,7 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
                 background-color: transparent;
                 color: ${theme.colors[kind || KindTypes.PRIMARY]};
                 border-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+
                 &:hover {
                     background-color: ${theme.colors[
                         kind || KindTypes.PRIMARY
@@ -25,6 +22,7 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
                 background-color: transparent;
                 color: ${theme.colors[kind || KindTypes.PRIMARY]};
                 border-color: transparent;
+
                 &:hover {
                     background-color: ${theme.colors.secondaryGrey};
                 }
@@ -36,6 +34,7 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
                     kind === KindTypes.SECONDARY ? KindTypes.PRIMARY : "light"
                 ]};
                 border-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+
                 &:hover {
                     background-color: ${theme.colors[kind || KindTypes.PRIMARY]}${theme.opacityCodes["80%"]};
                     border-color: transparent;
@@ -45,7 +44,7 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
     }
 };
 
-export const ButtonStyle = styled.button<IVariantAndKindTypes>`
+export const ButtonStyle = styled.button<IbuttonStyle>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,8 +57,12 @@ export const ButtonStyle = styled.button<IVariantAndKindTypes>`
     font-size: ${({ theme }) => theme.typography.size.xs};
     font-weight: ${({ theme }) => theme.typography.weight.medium};
     ${variantHandler}
+
+    ${(props) => props.fullwidth && `width: 100%;`};
+
     &[disabled] {
         pointer-events: none;
+        user-select: none;
         opacity: 0.5;
         cursor: not-allowed;
         ${(props) => props.kind === KindTypes.SECONDARY && `opacity: 0.7;`};
