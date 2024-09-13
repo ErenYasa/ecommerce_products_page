@@ -8,7 +8,7 @@ export const BreadcrumbContainer = styled.div`
 
 export const Item = styled.span``;
 
-export const ItemLink = styled.a<{ active: boolean }>`
+export const ItemLink = styled.a<{ active: string }>`
     ${(props) =>
         props.active &&
         css`

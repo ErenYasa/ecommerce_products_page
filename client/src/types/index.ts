@@ -11,7 +11,7 @@ export enum ScreenSizes {
     XXL = "1536px",
 }
 
-export enum SizeTypes {
+export enum ScreenSizeTypes {
     SM = "sm",
     MD = "md",
     LG = "lg",
@@ -43,6 +43,10 @@ export interface IKindTypes {
     kind?: "primary" | "secondary" | "dark";
 }
 
+export interface ISizeTypes {
+    size?: "sm" | "std" | "lg";
+}
+
 export interface IVariantAndKindTypes extends IVariantTypes, IKindTypes {}
 
 export interface IGlobalVariantHandler extends IVariantTypes, IKindTypes {
@@ -62,4 +66,6 @@ export interface IKindTypesAndSize extends IKindTypes {
  * TYPES
  */
 export type TKindTypes = "primary" | "secondary" | "dark";
+
+export type TSizeTypes = "sm" | "std" | "lg";
 /*  */

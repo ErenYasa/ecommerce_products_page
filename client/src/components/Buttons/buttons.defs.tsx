@@ -16,6 +16,6 @@ export interface ButtonProps extends IVariantAndKindTypes {
  * FOR STYLES
  */
 export interface IbuttonStyle extends IVariantAndKindTypes {
-    fullwidth?: boolean;
+    fullwidth?: string;
 }
 /*  */

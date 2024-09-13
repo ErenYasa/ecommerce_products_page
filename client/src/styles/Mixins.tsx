@@ -1,8 +1,8 @@
 import { css } from "styled-components";
-import { SizeTypes } from "@/types";
+import { ScreenSizeTypes } from "@/types";
 import { theme } from "./Theme";
 
-export const MContainer = (size: SizeTypes) => css`
+export const MContainer = (size: ScreenSizeTypes) => css`
     width: 100%;
     max-width: ${theme.containerMaxWidths[size]};
     margin-inline: auto;
