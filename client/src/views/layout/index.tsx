@@ -1,36 +1,32 @@
 import { LayoutStyle } from "./styled";
+import { useAppSelector } from "@/store/hooks";
 import Listing from "../listing";
-import { Button } from "@/components/Buttons";
+import { ModalNames, SizeTypes } from "@/types";
 import { Modal } from "@/components/Modal";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { ModalNames } from "@/types";
-import { openModal } from "@/store/slices/modal.slice";
+import FiltersModal from "@/components/Modal/Modals/Filters";
+import SortingModal from "@/components/Modal/Modals/Sorting";
 
 export default function Layout() {
     const modals = useAppSelector((state) => state.Modal.modals);
 
-    const dispatch = useAppDispatch();
-
-    const open = () => {
-        dispatch(openModal({ name: ModalNames.SORTING, data: "" }));
-    };
-
     return (
         <>
-            <Button kind="dark" onClick={open}>
-                OPEN MODAL
-            </Button>
             <LayoutStyle>
                 <Listing />
             </LayoutStyle>
             {modals[ModalNames.FILTERS] && (
-                <Modal name="filters" kind="dark">
-                    TEST MODAL
+                <Modal name="filters" kind="dark" className="filters-modal">
+                    <FiltersModal />
                 </Modal>
             )}
             {modals[ModalNames.SORTING] && (
-                <Modal name="sorting" kind="dark">
-                    TEST MODAL
+                <Modal
+                    name="sorting"
+                    kind="dark"
+                    size={SizeTypes.SM}
+                    className="sorting-modal"
+                >
+                    <SortingModal />
                 </Modal>
             )}
         </>

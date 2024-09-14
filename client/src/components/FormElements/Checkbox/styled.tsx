@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { IKindTypes, IKindTypesAndTheme, KindTypes } from "@/types";
+import { IKindTypesAndTheme, KindTypes } from "@/types";
+import { ICheckboxStyle } from "./Checkbox.defs";
 
 const variantHandler = ({ kind, theme }: IKindTypesAndTheme) => css`
     &:hover {
@@ -59,7 +60,7 @@ export const Input = styled.input.attrs({ type: "checkbox" })`
     }
 `;
 
-export const Label = styled.label<IKindTypes>`
+export const Label = styled.label<ICheckboxStyle>`
     position: relative;
     display: flex;
     align-items: center;
@@ -70,6 +71,46 @@ export const Label = styled.label<IKindTypes>`
     font-weight: ${(props) => props.theme.typography.weight.light};
     cursor: pointer;
     ${variantHandler}
+
+    ${({ order }) => {
+        if (order === "after") {
+            return css`
+                max-width: 100%;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+
+                ${Checkmark} {
+                    left: unset;
+                    right: 0;
+                }
+            `;
+        }
+        return false;
+    }}
+  
+  ${({ theme, size }) => {
+        if (size === "lg") {
+            return css`
+                min-height: 3rem;
+                font-size: ${theme.typography.size.sm};
+                font-weight: ${theme.typography.weight.regular};
+
+                ${Checkmark} {
+                    width: 3rem;
+                    height: 3rem;
+                    &:after {
+                        top: 0.1rem;
+                        left: 0.9rem;
+                        width: 1rem;
+                        height: 2rem;
+                    }
+                }
+            `;
+        }
+
+        return "10px";
+    }};
 `;
 
 export const Text = styled.p`

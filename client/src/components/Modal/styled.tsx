@@ -10,6 +10,7 @@ const variantHandler = ({ kind }: IKindTypes) => {
                     background-color: #f5f5f5;
                     border-color: ${({ theme }) => theme.colors.secondary};
                 }
+
                 ${CloseBtn} svg {
                     fill: ${({ theme }) => theme.colors.secondary};
                 }
@@ -20,6 +21,7 @@ const variantHandler = ({ kind }: IKindTypes) => {
                     background-color: #f5f5f5;
                     border-color: ${({ theme }) => theme.colors.dark};
                 }
+
                 ${CloseBtn} svg {
                     fill: ${({ theme }) => theme.colors.dark};
                 }
@@ -30,34 +32,13 @@ const variantHandler = ({ kind }: IKindTypes) => {
                     background-color: #f5f5f5;
                     border-color: ${({ theme }) => theme.colors.primary};
                 }
+
                 ${CloseBtn} svg {
                     fill: ${({ theme }) => theme.colors.primary};
                 }
             `;
     }
 };
-
-export const ModalWrapper = styled.div<IKindTypes>`
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    overflow-x: hidden;
-    transition: all 0.3s ease;
-    will-change: backdrop-filter, background;
-    ${variantHandler}
-    @media ${device.sm} {
-        align-items: flex-start;
-    }
-    &.open {
-        background: rgba(0, 0, 0, 0.2);
-    }
-`;
 
 const fadeInTopModal = keyframes`
     0% {
@@ -86,10 +67,12 @@ export const ModalStyle = styled.div<ISizeTypes>`
     box-shadow: 0 2rem 10rem 0 #00000045;
     background-color: ${({ theme }) => theme.colors.light};
     animation: ${fadeInTopModal} 0.3s ease forwards;
+
     @media ${device.sm} {
         max-width: ${({ size }) => {
             if (size === SizeTypes.SM) return "40rem";
             if (size === SizeTypes.LG) return "76rem";
+
             return "55rem";
         }};
         max-height: calc(100% - 14rem);
@@ -99,17 +82,13 @@ export const ModalStyle = styled.div<ISizeTypes>`
     }
 `;
 
-export const Header = styled.header`
+export const Header = styled.div`
     position: sticky;
     top: 0;
     display: flex;
     justify-content: flex-end;
     min-height: 0.1rem;
-    padding-right: 5rem;
-    margin-bottom: 3rem;
-    @media ${device.sm} {
-        padding-right: 6rem;
-    }
+    height: 4rem;
 `;
 
 export const CloseBtn = styled.button.attrs({ type: "button" })`
@@ -126,4 +105,54 @@ export const CloseBtn = styled.button.attrs({ type: "button" })`
     box-shadow: 0 0 1.5rem 0 #00000015;
     background-color: ${({ theme }) => theme.colors.light};
     transition: all 0.3s ease;
+`;
+
+export const ModalWrapper = styled.div<IKindTypes>`
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    will-change: backdrop-filter, background;
+    ${variantHandler}
+
+    @media ${device.sm} {
+        align-items: flex-start;
+    }
+
+    &.open {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /**
+ * CUSTOM CLASSES
+ */
+    &.sorting-modal {
+        @media (max-width: 576px) {
+            align-items: center;
+
+            ${ModalStyle} {
+                max-width: 80%;
+                border-bottom-left-radius: ${({ theme }) =>
+                    theme.borderRadius.lg};
+                border-bottom-right-radius: ${({ theme }) =>
+                    theme.borderRadius.lg};
+            }
+        }
+    }
+
+    &.filters-modal {
+        @media (max-width: 576px) {
+            ${ModalStyle} {
+                min-height: 90%;
+            }
+        }
+    }
+    /*  */
 `;

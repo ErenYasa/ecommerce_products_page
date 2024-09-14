@@ -1,3 +1,5 @@
+import { TKindTypes } from "@/types";
+
 export type CheckboxProps = {
     id?: string;
     name?: string;
@@ -10,3 +12,12 @@ export type CheckboxProps = {
     text?: string;
     kind?: "primary" | "secondary" | "dark";
 };
+
+/**
+ * FOR STYLE
+ */
+export interface ICheckboxStyle {
+    kind?: TKindTypes;
+    size: "std" | "lg";
+    order: string;
+}

@@ -5,6 +5,7 @@ import { IconArrowDown } from "@/icons";
 
 export default function ListFilter({
     open = false,
+    alwaysopen = false,
     className,
     title,
     children,
@@ -12,10 +13,14 @@ export default function ListFilter({
     const classes = classNames(className);
 
     return (
-        <ListFilterStyle open={open} className={classes}>
+        <ListFilterStyle
+            open={alwaysopen ? true : open}
+            alwaysopen={alwaysopen ? "true" : ""}
+            className={classes}
+        >
             <Title>
                 <TitleText>{title}</TitleText>
-                <IconArrowDown width="12" height="12" />
+                {!alwaysopen && <IconArrowDown width="12" height="12" />}
             </Title>
             <Body>{children}</Body>
         </ListFilterStyle>
