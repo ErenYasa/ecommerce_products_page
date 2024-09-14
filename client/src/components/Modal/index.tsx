@@ -31,22 +31,23 @@ export const Modal = ({
 
     if (!isOpen) return null;
 
-    const classes = classNames({
+    const classes = classNames(className, {
         open: isOpen,
-        className,
     });
 
     return createPortal(
-        <ModalWrapper className={classes} kind={kind}>
-            <ModalStyle ref={modalRef} size={size || SizeTypes.STD}>
-                <Header>
-                    <CloseBtn onClick={close}>
-                        <IconClose width="1.8rem" height="1.8rem" />
-                    </CloseBtn>
-                </Header>
-                {children}
-            </ModalStyle>
-        </ModalWrapper>,
+        <>
+            <ModalWrapper className={classes} kind={kind}>
+                <ModalStyle ref={modalRef} size={size || SizeTypes.STD}>
+                    <Header>
+                        <CloseBtn onClick={close}>
+                            <IconClose width="1.8rem" height="1.8rem" />
+                        </CloseBtn>
+                    </Header>
+                    {children}
+                </ModalStyle>
+            </ModalWrapper>
+        </>,
         document.body
     );
 };

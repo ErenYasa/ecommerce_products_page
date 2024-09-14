@@ -11,8 +11,10 @@ type CheckboxProps = {
     defaultChecked?: boolean;
     disabled?: boolean;
     text?: string;
+    textOrder?: "before" | "after";
     kind?: TKindTypes;
     checked?: boolean;
+    size?: "std" | "lg";
 };
 
 export default function Checkbox(props: CheckboxProps) {
@@ -21,7 +23,12 @@ export default function Checkbox(props: CheckboxProps) {
     });
 
     return (
-        <Label kind={props.kind || KindTypes.PRIMARY} className={classes}>
+        <Label
+            kind={props.kind || KindTypes.PRIMARY}
+            order={props.textOrder || ""}
+            size={props.size || "std"}
+            className={classes}
+        >
             <Input
                 id={props.id}
                 name={props.name}

@@ -1,4 +1,4 @@
-import { IconArrowDown } from "@/Icons";
+import { IconArrowDown } from "@/icons";
 import { Container, Holder, List, ListItem } from "./styled";
 
 export default function DropdownList() {
@@ -6,10 +6,10 @@ export default function DropdownList() {
         <Container>
             <Holder>
                 <List>
-                    <ListItem value="Option 1">View All</ListItem>
-                    <ListItem value="Option 2">New Added</ListItem>
-                    <ListItem value="Option 3">Ascending Pricen</ListItem>
-                    <ListItem value="Option 4">Descending Price</ListItem>
+                    <ListItem value="all">View All</ListItem>
+                    <ListItem value="news">New Added</ListItem>
+                    <ListItem value="asc">Ascending Pricen</ListItem>
+                    <ListItem value="dsc">Descending Price</ListItem>
                 </List>
             </Holder>
             <IconArrowDown width="12" height="12" />

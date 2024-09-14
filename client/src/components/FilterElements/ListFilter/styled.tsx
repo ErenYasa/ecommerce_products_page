@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const Title = styled.summary`
+    position: relative;
     user-select: none;
     display: flex;
     align-items: center;
@@ -17,8 +18,12 @@ export const Title = styled.summary`
     }
 `;
 
-export const ListFilterStyle = styled.details`
+export const ListFilterStyle = styled.details<{ alwaysopen: string }>`
     padding-block: 1.5rem;
+
+    ${Title} {
+        ${({ alwaysopen }) => alwaysopen === "true" && "pointer-events: none;"}
+    }
 
     &[open] {
         ${Title} {

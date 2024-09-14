@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Input, Label, Slider, Text } from "./styled";
-import { KindTypes, TKindTypes } from "@/types";
+import { KindTypes, SizeTypes, TKindTypes } from "@/types";
 
 type CheckboxProps = {
     id?: string;
@@ -12,7 +12,7 @@ type CheckboxProps = {
     defaultChecked?: boolean;
     disabled?: boolean;
     text?: string;
-    size?: "sm" | "md" | "lg";
+    size?: SizeTypes;
     checked?: boolean;
     kind?: TKindTypes;
 };
