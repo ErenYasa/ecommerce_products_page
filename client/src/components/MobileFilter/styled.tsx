@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MobileFilterStyle = styled.div`
     position: sticky;
     top: 0;
+    z-index: 9;
     margin-top: 2rem;
     margin-inline: -1.5rem;
     padding: 1rem 1.5rem;
@@ -13,8 +14,6 @@ export const Container = styled.div`
     display: flex;
     background-color: ${(props) => props.theme.colors.secondaryGrey};
     border-radius: ${(props) => props.theme.borderRadius.sm};
-    /* border-bottom: 0.1rem solid ${(props) =>
-        props.theme.colors.primaryGrey}; */
 `;
 
 export const FilterButton = styled.button`

@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
-import { TKindTypes, ScreenSizeTypes } from "@/types";
+import { TKindTypes, TSizeTypes } from "@/types";
 
 export interface IModalProps {
+    name: string;
+    className?: string;
     children: ReactNode;
-    size?: ScreenSizeTypes;
+    size?: TSizeTypes;
     outsideClick?: boolean;
-    isOpen: boolean;
-    toggle: () => void;
     kind?: TKindTypes;
 }

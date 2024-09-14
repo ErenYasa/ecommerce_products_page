@@ -30,6 +30,17 @@ export enum KindTypes {
     SECONDARY = "secondary",
     DARK = "dark",
 }
+
+export enum SizeTypes {
+    SM = "sm",
+    STD = "std",
+    LG = "lg",
+}
+
+export enum ModalNames {
+    FILTERS = "filters",
+    SORTING = "sorting",
+}
 /*  */
 
 /**
