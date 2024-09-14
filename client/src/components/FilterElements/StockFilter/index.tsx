@@ -3,7 +3,7 @@ import { StockFilterStyle } from "./styled";
 import Switch from "@/components/FormElements/Switch";
 
 export default function StockFilter() {
-    const [first, setFirst] = useState<boolean>(false);
+    const [first, setFirst] = useState<boolean>(true);
 
     const handleChange = () => {
         setFirst(!first);

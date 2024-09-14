@@ -14,7 +14,9 @@
             "@components/*": ["./src/components/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@icons/*": ["./src/icons/*"],
-            "@types/*": ["./src/types/*"]
+            "@types/*": ["./src/types/*"],
+            "@store/*": ["./src/store/*"],
+            "@services/*": ["./src/services/*"]
         },
 
         /* Bundler mode */

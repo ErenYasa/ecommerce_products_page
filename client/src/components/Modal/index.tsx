@@ -5,21 +5,25 @@ import { CloseBtn, Header, ModalStyle, ModalWrapper } from "./styled";
 import { IModalProps } from "./modal.defs";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useLockBodyScroll } from "@/hooks/useBodyScroll";
-import { ScreenSizeTypes } from "@/types";
+import { SizeTypes } from "@/types";
 import { IconClose } from "@/icons";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { closeModal } from "@/store/slices/modal.slice";
 
 export const Modal = ({
+    name,
+    className,
     children,
     size,
-    isOpen,
-    toggle,
     kind,
     outsideClick = true,
 }: IModalProps) => {
+    const isOpen = useAppSelector((state) => state.Modal.modals[name]);
+    const dispatch = useAppDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
 
     const close = () => {
-        toggle();
+        dispatch(closeModal({ name }));
     };
 
     useOutsideClick(modalRef, close, outsideClick);
@@ -29,12 +33,12 @@ export const Modal = ({
 
     const classes = classNames({
         open: isOpen,
-        // [className]: className,
+        className,
     });
 
     return createPortal(
         <ModalWrapper className={classes} kind={kind}>
-            <ModalStyle ref={modalRef} size={size || ScreenSizeTypes.STD}>
+            <ModalStyle ref={modalRef} size={size || SizeTypes.STD}>
                 <Header>
                     <CloseBtn onClick={close}>
                         <IconClose width="1.8rem" height="1.8rem" />
