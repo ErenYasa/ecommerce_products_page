@@ -10,14 +10,16 @@ export type CheckboxProps = {
     checked?: boolean;
     disabled?: boolean;
     text?: string;
+    textOrder?: "before" | "after";
     kind?: "primary" | "secondary" | "dark";
+    size?: "std" | "lg";
 };
 
 /**
  * FOR STYLE
  */
-export interface ICheckboxStyle {
-    kind?: TKindTypes;
-    size: "std" | "lg";
-    order: string;
+export interface CheckboxStyle {
+    $kind?: TKindTypes;
+    $size: "std" | "lg";
+    $order: string;
 }

@@ -1,30 +1,36 @@
 import styled, { css } from "styled-components";
 import { IKindTypesAndTheme, KindTypes } from "@/types";
-import { ICheckboxStyle } from "./Checkbox.defs";
+import { CheckboxStyle } from "./Checkbox.defs";
 
-const variantHandler = ({ kind, theme }: IKindTypesAndTheme) => css`
+const variantHandler = ({ $kind, theme }: IKindTypesAndTheme) => css`
     &:hover {
         ${Checkmark} {
-            border-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+            border-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
         }
     }
+
     ${Input}:checked ~ ${Checkmark} {
-        background-color: ${theme.colors[kind || KindTypes.PRIMARY]};
-        border: 0.1rem solid ${theme.colors[kind || KindTypes.PRIMARY]};
+        background-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
+        border: 0.1rem solid ${theme.colors[$kind || KindTypes.PRIMARY]};
     }
+
     &.disabled {
         pointer-events: none;
+
         cursor: not-allowed;
+
         ${Input} ~ ${Checkmark} {
             opacity: 0.5;
             background-color: ${theme.colors.secondaryGrey};
             border-color: ${theme.colors.primaryGrey};
         }
+
         ${Input}:checked ~ ${Checkmark} {
             opacity: 0.5;
-            background-color: ${theme.colors[kind || KindTypes.PRIMARY]};
-            border: 0.1rem solid ${theme.colors[kind || KindTypes.PRIMARY]};
+            background-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
+            border: 0.1rem solid ${theme.colors[$kind || KindTypes.PRIMARY]};
         }
+
         ${Text} {
             opacity: 0.3;
         }
@@ -40,6 +46,7 @@ export const Checkmark = styled.span`
     border: 0.2rem solid ${(props) => props.theme.colors.primaryGrey};
     border-radius: ${(props) => props.theme.borderRadius.xs};
     cursor: pointer;
+
     &:after {
         content: "";
         position: absolute;
@@ -60,7 +67,7 @@ export const Input = styled.input.attrs({ type: "checkbox" })`
     }
 `;
 
-export const Label = styled.label<ICheckboxStyle>`
+export const Label = styled.label<CheckboxStyle>`
     position: relative;
     display: flex;
     align-items: center;
@@ -72,8 +79,8 @@ export const Label = styled.label<ICheckboxStyle>`
     cursor: pointer;
     ${variantHandler}
 
-    ${({ order }) => {
-        if (order === "after") {
+    ${({ $order }) => {
+        if ($order === "after") {
             return css`
                 max-width: 100%;
                 width: 100%;
@@ -89,8 +96,9 @@ export const Label = styled.label<ICheckboxStyle>`
         return false;
     }}
   
-  ${({ theme, size }) => {
-        if (size === "lg") {
+
+  ${({ theme, $size }) => {
+        if ($size === "lg") {
             return css`
                 min-height: 3rem;
                 font-size: ${theme.typography.size.sm};
@@ -99,6 +107,7 @@ export const Label = styled.label<ICheckboxStyle>`
                 ${Checkmark} {
                     width: 3rem;
                     height: 3rem;
+
                     &:after {
                         top: 0.1rem;
                         left: 0.9rem;

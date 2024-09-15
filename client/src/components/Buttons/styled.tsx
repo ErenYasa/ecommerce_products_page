@@ -1,18 +1,18 @@
 import { css, styled } from "styled-components";
 import { IGlobalVariantHandler, KindTypes, VariantTypes } from "@/types";
-import { IbuttonStyle } from "./buttons.defs";
+import { IButtonStyle } from "./buttons.defs";
 
-const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
+const variantHandler = ({ variant, $kind, theme }: IGlobalVariantHandler) => {
     switch (variant) {
         case VariantTypes.OUTLINE:
             return css`
                 background-color: transparent;
-                color: ${theme.colors[kind || KindTypes.PRIMARY]};
-                border-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+                color: ${theme.colors[$kind || KindTypes.PRIMARY]};
+                border-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
 
                 &:hover {
                     background-color: ${theme.colors[
-                        kind || KindTypes.PRIMARY
+                        $kind || KindTypes.PRIMARY
                     ]};
                     color: ${theme.colors.light};
                 }
@@ -20,7 +20,7 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
         case VariantTypes.GHOST:
             return css`
                 background-color: transparent;
-                color: ${theme.colors[kind || KindTypes.PRIMARY]};
+                color: ${theme.colors[$kind || KindTypes.PRIMARY]};
                 border-color: transparent;
 
                 &:hover {
@@ -29,22 +29,24 @@ const variantHandler = ({ variant, kind, theme }: IGlobalVariantHandler) => {
             `;
         default:
             return css`
-                background-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+                background-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
                 color: ${theme.colors[
-                    kind === KindTypes.SECONDARY ? KindTypes.PRIMARY : "light"
+                    $kind === KindTypes.SECONDARY ? KindTypes.PRIMARY : "light"
                 ]};
-                border-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+                border-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
 
                 &:hover {
-                    background-color: ${theme.colors[kind || KindTypes.PRIMARY]}${theme.opacityCodes["80%"]};
+                    background-color: ${theme.colors[
+                            $kind || KindTypes.PRIMARY
+                        ]}${theme.opacityCodes["80%"]};
                     border-color: transparent;
-                    ${kind === KindTypes.SECONDARY && `opacity: 0.9;`};
+                    ${$kind === KindTypes.SECONDARY && `opacity: 0.9;`};
                 }
             `;
     }
 };
 
-export const ButtonStyle = styled.button<IbuttonStyle>`
+export const ButtonStyle = styled.button<IButtonStyle>`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,6 +67,6 @@ export const ButtonStyle = styled.button<IbuttonStyle>`
         user-select: none;
         opacity: 0.5;
         cursor: not-allowed;
-        ${(props) => props.kind === KindTypes.SECONDARY && `opacity: 0.7;`};
+        ${(props) => props.$kind === KindTypes.SECONDARY && `opacity: 0.7;`};
     }
 `;

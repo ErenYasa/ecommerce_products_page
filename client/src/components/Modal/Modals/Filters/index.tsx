@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import StockFilter from "@/components/FilterElements/StockFilter";
 import {
     Body,
     FilterButton,
@@ -8,51 +9,15 @@ import {
     GoBackButton,
     Wrapper,
 } from "./styled";
-import StockFilter from "@/components/FilterElements/StockFilter";
 import ListFilter from "@/components/FilterElements/ListFilter";
 import CheckboxList from "@/components/CheckboxList";
 import Header from "../../partials/Header";
 import { IconArrowDown } from "@/icons";
-
-const BRANDS = [
-    "Brand 1",
-    "Brand 2",
-    "Brand 3",
-    "Brand 4",
-    "Brand 5",
-    "Brand 6",
-    "Brand 7",
-    "Brand 8",
-    "Brand 9",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-    "Brand 10",
-];
-
-const COLORS = [
-    "#ff0000",
-    "#00ff00",
-    "#0000ff",
-    "#ffff00",
-    "#ff00ff",
-    "#00ffff",
-    "#000000",
-    "#c0c0c0",
-    "#808080",
-    "#800000",
-    "#808000",
-    "#008000",
-    "#800080",
-    "#008080",
-    "#000080",
-];
+import { useAppSelector } from "@/store/hooks";
+import { getFilterValues } from "@/helpers/filterHelpers";
 
 export default function FiltersModal() {
+    const { brand, color } = useAppSelector((state) => state.App.filterItems);
     const [whichScreen, setWhichScreen] = useState<string>("main");
 
     const toggleScreen = (wrapperName: "main" | "brands" | "colors") => {
@@ -71,7 +36,9 @@ export default function FiltersModal() {
                 )}
             </Header>
             <Body>
-                {/* MODALIN İLK SAYFASI */}
+                {/**
+                 * MODALIN İLK SAYFASI
+                 * */}
                 {whichScreen === "main" && (
                     <>
                         <StockFilter />
@@ -80,14 +47,23 @@ export default function FiltersModal() {
                             onClick={() => toggleScreen("brands")}
                         >
                             Brands
-                            {true && (
+                            {getFilterValues("brand").length > 0 && (
                                 <FilteredValueWrapper>
                                     <FilteredValueTitle>
                                         Selected:{" "}
                                     </FilteredValueTitle>
                                     <FilteredValue>
-                                        Brand 1, Brand 2, Brand 1, Brand 2,
-                                        Brand 1, Brand 2, Brand 1, Brand 2
+                                        {getFilterValues("brand")
+                                            .sort()
+                                            .map((item, i) => (
+                                                <Fragment key={i}>
+                                                    {item}
+                                                    {i <
+                                                        getFilterValues("brand")
+                                                            .length -
+                                                            1 && ", "}
+                                                </Fragment>
+                                            ))}
                                     </FilteredValue>
                                 </FilteredValueWrapper>
                             )}
@@ -97,13 +73,23 @@ export default function FiltersModal() {
                             onClick={() => toggleScreen("colors")}
                         >
                             Colors
-                            {true && (
+                            {getFilterValues("color").length > 0 && (
                                 <FilteredValueWrapper>
                                     <FilteredValueTitle>
                                         Selected:{" "}
                                     </FilteredValueTitle>
                                     <FilteredValue>
-                                        Color 1, Color 2
+                                        {getFilterValues("color")
+                                            .sort()
+                                            .map((item, i) => (
+                                                <Fragment key={i}>
+                                                    {item}
+                                                    {i <
+                                                        getFilterValues("color")
+                                                            .length -
+                                                            1 && ", "}
+                                                </Fragment>
+                                            ))}
                                     </FilteredValue>
                                 </FilteredValueWrapper>
                             )}
@@ -111,15 +97,19 @@ export default function FiltersModal() {
                     </>
                 )}
                 {/*  */}
-                {/* FİLTRE DETAY SAYFALARI */}
+
+                {/** *
+                 * FİLTRELERİN DETAY SAYFALARI
+                 * */}
                 {whichScreen !== "main" && (
                     <Wrapper>
                         {whichScreen === "brands" && (
                             <>
-                                {BRANDS.length > 0 && (
+                                {brand.length > 0 && (
                                     <ListFilter alwaysopen title="BRANDS:">
                                         <CheckboxList
-                                            data={BRANDS}
+                                            data={brand}
+                                            checkboxName="brand"
                                             checkboxSize="lg"
                                             checkboxTextOrder="after"
                                         />
@@ -129,10 +119,11 @@ export default function FiltersModal() {
                         )}
                         {whichScreen === "colors" && (
                             <>
-                                {COLORS.length > 0 && (
+                                {color.length > 0 && (
                                     <ListFilter alwaysopen title="COLORS:">
                                         <CheckboxList
-                                            data={COLORS}
+                                            data={color}
+                                            checkboxName="color"
                                             checkboxSize="lg"
                                             checkboxTextOrder="after"
                                         />

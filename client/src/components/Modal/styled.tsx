@@ -2,8 +2,8 @@ import { css, keyframes, styled } from "styled-components";
 import { IKindTypes, ISizeTypes, KindTypes, SizeTypes } from "@/types";
 import { device } from "@/styles/Breakpoints";
 
-const variantHandler = ({ kind }: IKindTypes) => {
-    switch (kind) {
+const variantHandler = ({ $kind }: IKindTypes) => {
+    switch ($kind) {
         case KindTypes.SECONDARY:
             return css`
                 ${CloseBtn}:hover {
@@ -85,6 +85,7 @@ export const ModalStyle = styled.div<ISizeTypes>`
 export const Header = styled.div`
     position: sticky;
     top: 0;
+    z-index: 2;
     display: flex;
     justify-content: flex-end;
     min-height: 0.1rem;

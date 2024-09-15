@@ -6,8 +6,18 @@ import { Products } from "@/services/product/product.defs";
 const initialState: IAppState = {
     localLoader: false,
     appLoader: false,
-    produtcs: [],
+    products: [],
     activeProducts: [],
+    filterItems: {
+        brand: [],
+        color: [],
+    },
+    activeFilters: {
+        brand: "",
+        color: "",
+        stock: "off",
+        sort: "all",
+    },
 };
 
 export const appSlice: Slice<IAppState> = createSlice({
@@ -21,15 +31,37 @@ export const appSlice: Slice<IAppState> = createSlice({
             state.localLoader = payload;
         },
         setProducts: (state, { payload }: PayloadAction<Products>) => {
-            state.produtcs = payload;
+            state.products = payload;
         },
         setActiveProducts: (state, { payload }: PayloadAction<Products>) => {
             state.activeProducts = payload;
         },
+        setFilterItems: (
+            state,
+            {
+                payload,
+            }: PayloadAction<{ name: "brand" | "color"; data: string[] }>
+        ) => {
+            const { name, data } = payload;
+
+            state.filterItems[name] = data;
+        },
+        setActiveFilters: (
+            state,
+            { payload }: PayloadAction<{ data: any }>
+        ) => {
+            state.activeFilters = payload;
+        },
     },
 });
 
-export const { setLocalLoader, setAppLoader, setProducts, setActiveProducts } =
-    appSlice.actions;
+export const {
+    setLocalLoader,
+    setAppLoader,
+    setProducts,
+    setActiveProducts,
+    setFilterItems,
+    setActiveFilters,
+} = appSlice.actions;
 
 export default appSlice.reducer;

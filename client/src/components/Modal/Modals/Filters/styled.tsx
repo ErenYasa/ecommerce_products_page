@@ -5,14 +5,17 @@ import { TitleText } from "@/components/FilterElements/ListFilter/styled";
 
 export const Body = styled.div`
     margin-top: 3rem;
+
     ${Switch} {
         justify-content: space-between;
         padding-block: 1.7rem;
+
         ${Text} {
             font-size: ${({ theme }) => theme.typography.size.sm};
             font-weight: ${({ theme }) => theme.typography.weight.regular};
         }
     }
+
     ${TitleText} {
         font-size: ${({ theme }) => theme.typography.size.md};
         font-weight: ${({ theme }) => theme.typography.weight.medium};
@@ -21,14 +24,17 @@ export const Body = styled.div`
 
 export const Wrapper = styled.div`
     ${CheckboxListStyle} {
-        height: initial;
+        max-height: initial;
     }
 `;
 
 export const GoBackButton = styled.button`
+    position: relative;
+    z-index: 2;
     display: flex;
     align-items: center;
     margin-top: -0.6rem;
+
     svg {
         transform: rotate(90deg);
     }
@@ -41,6 +47,7 @@ export const FilterButton = styled.button`
     padding-block: 1.7rem;
     padding-right: 3rem;
     border-block: 0.1rem solid ${({ theme }) => theme.colors.secondaryGrey};
+
     &:last-child {
         border-top: none;
     }

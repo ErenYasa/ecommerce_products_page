@@ -15,7 +15,7 @@ export interface ButtonProps extends IVariantAndKindTypes {
 /**
  * FOR STYLES
  */
-export interface IbuttonStyle extends IVariantAndKindTypes {
+export interface IButtonStyle extends IVariantAndKindTypes {
     fullwidth?: string;
 }
 /*  */

@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useRef } from "react";
 import classNames from "classnames";
 import { CloseBtn, Header, ModalStyle, ModalWrapper } from "./styled";
-import { IModalProps } from "./modal.defs";
+import { ModalProps } from "./modal.defs";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useLockBodyScroll } from "@/hooks/useBodyScroll";
 import { SizeTypes } from "@/types";
@@ -17,7 +17,7 @@ export const Modal = ({
     size,
     kind,
     outsideClick = true,
-}: IModalProps) => {
+}: ModalProps) => {
     const isOpen = useAppSelector((state) => state.Modal.modals[name]);
     const dispatch = useAppDispatch();
     const modalRef = useRef<HTMLDivElement>(null);
@@ -37,7 +37,7 @@ export const Modal = ({
 
     return createPortal(
         <>
-            <ModalWrapper className={classes} kind={kind}>
+            <ModalWrapper className={classes} $kind={kind}>
                 <ModalStyle ref={modalRef} size={size || SizeTypes.STD}>
                     <Header>
                         <CloseBtn onClick={close}>

@@ -7,7 +7,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    width: 18rem;
+    width: 17rem;
     height: 3.5rem;
     padding-inline: 1rem;
     border-radius: ${(props) => props.theme.borderRadius.sm};
