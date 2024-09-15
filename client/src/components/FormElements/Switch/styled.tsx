@@ -1,16 +1,18 @@
 import { css, styled } from "styled-components";
 import { IKindTypesAndSize, IKindTypesAndTheme, KindTypes } from "@/types";
 
-const variantHandler = ({ kind, theme }: IKindTypesAndTheme) => css`
+const variantHandler = ({ $kind, theme }: IKindTypesAndTheme) => css`
     ${Input}:checked + ${Slider} {
-        background-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+        background-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
     }
+
     &.disabled {
         pointer-events: none;
         opacity: 0.5;
         cursor: not-allowed;
+
         ${Input}:checked + ${Slider} {
-            background-color: ${theme.colors[kind || KindTypes.PRIMARY]};
+            background-color: ${theme.colors[$kind || KindTypes.PRIMARY]};
         }
     }
 `;

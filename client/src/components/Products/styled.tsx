@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { device } from "@/styles/Breakpoints";
+import { StockFilterStyle as StockFilter } from "../FilterElements/StockFilter/styled";
 
 export const ProductsStyle = styled.main`
     width: 100%;
@@ -9,6 +10,10 @@ export const ProductsTop = styled.div`
     display: flex;
     align-items: center;
     gap: 5rem;
+
+    ${StockFilter} {
+        white-space: nowrap;
+    }
 `;
 
 export const ProductsTopLeft = styled.div`

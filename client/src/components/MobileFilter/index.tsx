@@ -4,7 +4,7 @@ import { openModal } from "@/store/slices/modal.slice";
 import { ModalNames } from "@/types";
 import { useAppDispatch } from "@/store/hooks";
 
-export function MobileFilter() {
+export function MobileFilterButtons() {
     const dispatch = useAppDispatch();
 
     const openFiltersModal = () => {

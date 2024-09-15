@@ -1,15 +1,20 @@
-import { IconArrowDown } from "@/icons";
 import { Container, Holder, List, ListItem } from "./styled";
+import { DropdownListProps } from "./dropdownList.defs";
+import { IconArrowDown } from "@/icons";
 
-export default function DropdownList() {
+export default function DropdownList({
+    listItems,
+    onChange,
+}: DropdownListProps) {
     return (
         <Container>
             <Holder>
-                <List>
-                    <ListItem value="all">View All</ListItem>
-                    <ListItem value="news">New Added</ListItem>
-                    <ListItem value="asc">Ascending Pricen</ListItem>
-                    <ListItem value="dsc">Descending Price</ListItem>
+                <List onChange={onChange}>
+                    {listItems.map(({ text, value }, i) => (
+                        <ListItem value={value} key={i}>
+                            {text}
+                        </ListItem>
+                    ))}
                 </List>
             </Holder>
             <IconArrowDown width="12" height="12" />

@@ -51,7 +51,7 @@ export interface IVariantTypes {
 }
 
 export interface IKindTypes {
-    kind?: "primary" | "secondary" | "dark";
+    $kind?: "primary" | "secondary" | "dark";
 }
 
 export interface ISizeTypes {

@@ -1,21 +1,7 @@
-import React from "react";
 import classnames from "classnames";
 import { Input, Label, Slider, Text } from "./styled";
-import { KindTypes, SizeTypes, TKindTypes } from "@/types";
-
-type CheckboxProps = {
-    id?: string;
-    name?: string;
-    type?: string;
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    defaultChecked?: boolean;
-    disabled?: boolean;
-    text?: string;
-    size?: SizeTypes;
-    checked?: boolean;
-    kind?: TKindTypes;
-};
+import { CheckboxProps } from "./switch.defs";
+import { KindTypes } from "@/types";
 
 export default function Switch(props: CheckboxProps) {
     const classes = classnames({
@@ -24,7 +10,7 @@ export default function Switch(props: CheckboxProps) {
 
     return (
         <Label
-            kind={props.kind || KindTypes.PRIMARY}
+            $kind={props.kind || KindTypes.PRIMARY}
             size={props.size}
             className={classes}
         >

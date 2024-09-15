@@ -4,25 +4,27 @@ export const Label = styled.label`
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: #6b7280;
+    color: ${({ theme }) => theme.colors.darkGreyText};
     cursor: pointer;
 `;
 
 export const Input = styled.input`
     appearance: none;
-    background-color: #fff;
-    margin: 0;
-    font: inherit;
-    color: #8b92a1;
-    border: 0.2rem solid currentColor;
     display: inline-grid;
     place-content: center;
     width: 2.4rem;
     height: 2.4rem;
+    margin: 0;
+    font: inherit;
+    background-color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.switchBg};
+    border: 0.2rem solid currentColor;
     border-radius: 50%;
+
     &:checked {
         color: black;
     }
+
     &:before {
         content: "";
         width: 1.4rem;
@@ -33,6 +35,7 @@ export const Input = styled.input`
         box-shadow: inset 1rem 1rem currentColor;
         background: currentColor;
     }
+
     &:checked::before {
         transform: scale(1);
     }
