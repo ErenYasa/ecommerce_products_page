@@ -20,6 +20,7 @@ import { handleFilters } from "@/helpers";
 import {
     initFilters,
     removeParameter,
+    setInitFilters,
     updatePageParameter,
 } from "@/helpers/filterHelpers";
 import {
@@ -50,6 +51,10 @@ export function Products() {
     useEffect(() => {
         /* SAYFA YÜKLENDİĞİNDE, EĞER URL'DE VARSA, PARAMETLERİ STORE'A ATIYORUZ. */
         dispatch(setActiveFilters(initFilters()));
+        /*  */
+
+        /* SAYFA YÜKLENDİĞİNDE, DEFAULT OLARAK "view all" SIRALAMA TİPİ SEÇİLİ GELSİN */
+        setInitFilters("sort", "all");
         /*  */
 
         const initFilter = initFilters();
