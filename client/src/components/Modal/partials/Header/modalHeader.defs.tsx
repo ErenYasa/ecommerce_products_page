@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface ILayoutProps {
+export type HeaderProps = {
     children: ReactNode;
-}
+};
