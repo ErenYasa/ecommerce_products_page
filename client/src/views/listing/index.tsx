@@ -6,7 +6,8 @@ import { ScreenSizes } from "@/types";
 import { MobileFilterButtons } from "@/components/MobileFilter";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { SidebarFilter } from "@/components/SidebarFilter";
-import Products from "@/components/Products";
+import { Products } from "@/components/Products";
+import RotationLoader from "@/components/Loader";
 
 export default function Listing() {
     const isMobile = useMediaQuery();
@@ -16,7 +17,7 @@ export default function Listing() {
 
     return (
         <Fragment>
-            {!isFetching && (
+            {!isFetching ? (
                 <>
                     <Breadcrumb />
                     {isMobile && <MobileFilterButtons />}
@@ -25,6 +26,8 @@ export default function Listing() {
                         <Products />
                     </ListingStyle>
                 </>
+            ) : (
+                <RotationLoader />
             )}
         </Fragment>
     );
