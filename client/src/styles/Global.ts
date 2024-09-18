@@ -184,12 +184,38 @@ p, span {
 
 html,
 body {
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     font-size: 1.6rem;
 }
 
 #root {
     height: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: auto;
+    padding-top: 2rem;
+    .page-item {
+        border: .1rem solid ${({ theme }) => theme.colors.placeholderGrey};
+        border-radius: ${({ theme }) => theme.borderRadius.sm};
+        &:hover, &.active {
+            border-color: ${({ theme }) => theme.colors.dark};
+        }
+        &.disabled {
+            pointer-events: none;
+            opacity: .5;
+        }
+        
+        .page-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: .5rem 1rem;
+        }
+    }
 }
 `;

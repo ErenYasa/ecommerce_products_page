@@ -3,6 +3,8 @@ import { device } from "@/styles/Breakpoints";
 import { StockFilterStyle as StockFilter } from "../FilterElements/StockFilter/styled";
 
 export const ProductsStyle = styled.main`
+    display: flex;
+    flex-direction: column;
     width: 100%;
 `;
 
@@ -51,4 +53,9 @@ export const ProductsList = styled.div`
     @media (min-width: 1152px) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
+`;
+
+export const NoProducts = styled.div`
+    margin-top: 3rem;
+    font-size: ${({ theme }) => theme.typography.size.md};
 `;

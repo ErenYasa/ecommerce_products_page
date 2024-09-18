@@ -8,7 +8,6 @@ export type RadioProps = {
     defaultChecked?: boolean;
     disabled?: boolean;
     text?: string;
-    size?: "sm" | "md" | "lg";
     checked?: boolean;
     kind?: TKindTypes;
     textOrder?: "before" | "after";

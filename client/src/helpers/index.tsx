@@ -1,13 +1,18 @@
 import dayjs from "dayjs";
 import { store } from "@/store";
-import { IEnv } from "./helpers.defs";
+import {
+    setActiveProducts,
+    setCurrentPage,
+    setEndOffset,
+    setItemOffset,
+} from "@/store/slices/app.slice";
 import { Products } from "@/services/product/product.defs";
-import { setActiveProducts } from "@/store/slices/app.slice";
+import { IEnv } from "./helpers.defs";
+import { removeParameter } from "./filterHelpers";
 
 /* ENVIRONMENT AYRIMI İÇİN */
 export const getEnv = (): IEnv => {
     if (process.env.NODE_ENV === "development") return "DEV";
-
     return "PROD";
 };
 
@@ -27,6 +32,9 @@ export const handleFilters = () => {
         newProducts = newProducts.filter((product) =>
             parsedFilter.includes(product.brand.toLowerCase())
         );
+
+        /* FİLTRE SEÇİLİRSE PAGE'I SIFIRLIYORUZ. */
+        resetPage();
     }
     /*  */
 
@@ -36,19 +44,25 @@ export const handleFilters = () => {
         newProducts = newProducts.filter((product) =>
             parsedFilter.includes(product.color.toLowerCase())
         );
+
+        resetPage();
     }
     /*  */
 
     /* STOCK FİLTRESİ İÇİN */
-    if (activeFilters.stock)
+    if (activeFilters.stock) {
         newProducts = newProducts.filter((product) => product.quantity > 0);
+
+        /* FİLTRE SEÇİLİRSE PAGE'I SIFIRLIYORUZ. */
+        resetPage();
+    }
     /*  */
 
     /* SORTING FİLTRESİ İÇİN */
     if (activeFilters.sort) {
         switch (activeFilters.sort) {
             case "new":
-                /* TARİHLERİ TIMESTAMP'E ÇEVİR VE BÜYÜK OLANI DÖNDÜR */
+                /* TARİHLERİ TIMESTAMP'E ÇEVİR VE BÜYÜK OLANI DÖNDÜR. BÜYÜK OLAN YENİ OLAN DEMEKTİR. */
                 newProducts.sort(
                     (a, b) =>
                         dayjs(b.registeredAt).unix() -
@@ -64,10 +78,23 @@ export const handleFilters = () => {
             default:
                 break;
         }
+
+        /* FİLTRE SEÇİLİRSE PAGE'I SIFIRLIYORUZ. */
+        resetPage();
     }
     /*  */
 
     /* FİLTRE UYGULANMIŞ ÜRÜNLERİ "activeProducts" STATE'İNE ATARAK, ÜRÜNLERİ BU STATE ÜZERİNDEN GÖSTERİYORUZ. */
     store.dispatch(setActiveProducts(newProducts));
     return newProducts;
+};
+
+/* HER HANGİ BİR FİLTRE SEÇİMİNDE, TÜM PAGINATION VERİLERİNİ SIFIRLIYORUZ. */
+export const resetPage = () => {
+    const { dispatch } = store;
+
+    dispatch(setCurrentPage(0));
+    dispatch(setItemOffset(0));
+    dispatch(setEndOffset(8));
+    removeParameter("page");
 };

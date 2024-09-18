@@ -39,13 +39,6 @@ declare module "styled-components" {
                 bold: number;
             };
         };
-        paddings: {
-            container: string;
-            pageTop: string;
-        };
-        margins: {
-            pageTop: string;
-        };
         borderRadius: {
             xs: string;
             sm: string;

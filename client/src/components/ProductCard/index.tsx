@@ -1,5 +1,4 @@
 import { MouseEvent } from "react";
-import { Button } from "../Buttons";
 import {
     Body,
     BrandAndName,
@@ -10,35 +9,17 @@ import {
     FeatureList,
     Footer,
     ImageContainer,
-    MoreFeatureCount,
     Name,
-    OldPrice,
     Price,
     PriceContainer,
     ProductCardStyle,
     Top,
 } from "./styled";
+import { ProductCardProps } from "./productCard.defs";
+import { Button } from "../Buttons";
 
-const COLORS = [
-    "#ff0000",
-    "#00ff00",
-    "#0000ff",
-    "#ffff00",
-    "#ff00ff",
-    "#00ffff",
-    "#000000",
-    "#c0c0c0",
-    "#808080",
-    "#800000",
-    "#808000",
-    "#008000",
-    "#800080",
-    "#008080",
-    "#000080",
-];
-
-export default function ProductCard({ isDiscount = false }) {
-    const addFnc = (e: MouseEvent<HTMLButtonElement>) => {
+export default function ProductCard({ data }: ProductCardProps) {
+    const addToBasket = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         console.log("cl");
     };
@@ -49,72 +30,45 @@ export default function ProductCard({ isDiscount = false }) {
                 <ImageContainer>
                     <img
                         src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg"
-                        alt="product"
+                        alt={data.name}
                     />
                 </ImageContainer>
             </Top>
             <Body>
-                <BrandAndName title="Sports - Recycled Frozen Fish Recycled Frozen Fish Recycled Frozen Fish Recycled Frozen Fish">
-                    Sports -{" "}
-                    <Name>
-                        Recycled Frozen Fish Recycled Frozen Fish Recycled
-                        Frozen Fish Recycled Frozen Fish
-                    </Name>
+                <BrandAndName title={data.name}>
+                    {data.brand} - <Name>{data.name}</Name>
                 </BrandAndName>
                 <FaeturesContainer>
                     <Faeture>
                         <FaetureTitle>Colors</FaetureTitle>
                         <FeatureList>
-                            <>
-                                {COLORS.map((color, i) => {
-                                    if (i > 4) return false;
-                                    return (
-                                        <ColorCircle color={color} key={i} />
-                                    );
+                            {<ColorCircle color={data.color} />}
+                            {/* MULTIPLE FEATURE LOGIC */}
+                            {/* <>
+                                {data.color.map((color, i) => {
+                                if (i > 4) return false;
+                                return <ColorCircle color={color} key={i} />;
                                 })}
-                                {COLORS.length > 4 && (
-                                    <MoreFeatureCount>
-                                        +{COLORS.length - 4}
-                                    </MoreFeatureCount>
-                                )}
-                            </>
+                                {data.color.length > 4 && <MoreFeatureCount>+{data.color.length - 4}</MoreFeatureCount>}
+                                </>
+                            */}
+                            {/*  */}
                         </FeatureList>
                     </Faeture>
-                    {isDiscount && (
-                        <Faeture>
-                            <FaetureTitle>Colors</FaetureTitle>
-                            <FeatureList>
-                                <>
-                                    {COLORS.map((color, i) => {
-                                        if (i > 4) return false;
-                                        return (
-                                            <ColorCircle
-                                                color={color}
-                                                key={i}
-                                            />
-                                        );
-                                    })}
-                                    {COLORS.length > 4 && (
-                                        <MoreFeatureCount>
-                                            +{COLORS.length - 4}
-                                        </MoreFeatureCount>
-                                    )}
-                                </>
-                            </FeatureList>
-                        </Faeture>
-                    )}
                 </FaeturesContainer>
             </Body>
             <Footer>
                 <PriceContainer>
-                    {isDiscount && <OldPrice>129.00 ₺</OldPrice>}
-                    <Price>109.00 ₺</Price>
+                    {/* DISCOUNT FEATURE */}
+                    {/* {true && <OldPrice>129.00 ₺</OldPrice>} */}
+                    {/*  */}
+                    <Price>{data.price} ₺</Price>
                 </PriceContainer>
                 <Button
                     variant="outline"
-                    kind="dark"
+                    $kind="dark"
                     fullwidth
-                    onClick={addFnc}
+                    onClick={addToBasket}
                 >
                     Sepete Ekle
                 </Button>

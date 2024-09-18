@@ -41,7 +41,7 @@ export const MGridGaps = (gap: 0 | 1 | 2 | 3) => css`
     }
 `;
 
-export const MLineclamp = (lines?: number, lineHeight?: boolean) => css`
+export const MLineclamp = (lines?: number, lineHeight?: number) => css`
     display: -webkit-box;
     display: -moz-box;
     -webkit-box-orient: vertical;
@@ -50,9 +50,10 @@ export const MLineclamp = (lines?: number, lineHeight?: boolean) => css`
     line-clamp: ${lines || 2};
     overflow: hidden;
     text-overflow: ellipsis;
+
     ${() => {
-        if (lineHeight || false)
-            return `max-height: ${lineHeight || 2} * ${lines || 2} * 1px;`;
+        if (lineHeight)
+            return `max-height: ${(lineHeight || 2) * (lines || 2) * 1}px;`;
     }}
 `;
 
@@ -69,6 +70,7 @@ export const MVisuallyHidden = css`
     clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
     border: 0 !important;
+
     &:not(caption) {
         position: absolute !important;
     }

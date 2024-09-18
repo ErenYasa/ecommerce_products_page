@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { ListingStyle } from "./styled";
 import { useGetProductsQuery } from "@/services/product";
@@ -13,11 +12,7 @@ export default function Listing() {
     const isMobile = useMediaQuery();
     const isLargeScreen = useMediaQuery(`(min-width: ${ScreenSizes.LG})`);
 
-    const { isLoading, isFetching } = useGetProductsQuery("");
-
-    useEffect(() => {
-        // console.log(products);
-    }, [isFetching]);
+    const { isFetching } = useGetProductsQuery("");
 
     return (
         <Fragment>

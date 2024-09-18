@@ -1,9 +1,13 @@
 import { css, styled } from "styled-components";
-import { IGlobalVariantHandler, KindTypes, VariantTypes } from "@/types";
+import { IStyleGlobalVariantHandler, KindTypes, VariantTypes } from "@/types";
 import { IButtonStyle } from "./buttons.defs";
 
-const variantHandler = ({ variant, $kind, theme }: IGlobalVariantHandler) => {
-    switch (variant) {
+const variantHandler = ({
+    $variant,
+    $kind,
+    theme,
+}: IStyleGlobalVariantHandler) => {
+    switch ($variant) {
         case VariantTypes.OUTLINE:
             return css`
                 background-color: transparent;
@@ -60,7 +64,7 @@ export const ButtonStyle = styled.button<IButtonStyle>`
     font-weight: ${({ theme }) => theme.typography.weight.medium};
     ${variantHandler}
 
-    ${(props) => props.fullwidth && `width: 100%;`};
+    ${(props) => props.$fullwidth && `width: 100%;`};
 
     &[disabled] {
         pointer-events: none;

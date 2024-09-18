@@ -1,4 +1,20 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
+import { IStyleKindTypes, IStyleKindTypesAndTheme, KindTypes } from "@/types";
+
+const variantHandler = ({ $kind, theme }: IStyleKindTypesAndTheme) => css`
+    &:checked {
+        color: ${theme.colors[$kind || KindTypes.PRIMARY]};
+    }
+    &.disabled {
+        pointer-events: none;
+        & {
+            opacity: 0.5;
+        }
+        ${Text} {
+            opacity: 0.3;
+        }
+    }
+`;
 
 export const Label = styled.label`
     display: flex;
@@ -8,7 +24,7 @@ export const Label = styled.label`
     cursor: pointer;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<IStyleKindTypes>`
     appearance: none;
     display: inline-grid;
     place-content: center;
@@ -20,6 +36,7 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.colors.switchBg};
     border: 0.2rem solid currentColor;
     border-radius: 50%;
+    ${variantHandler}
 
     &:checked {
         color: black;

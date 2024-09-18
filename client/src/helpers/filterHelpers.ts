@@ -59,6 +59,12 @@ export const getAllFilters = () => {
 };
 /*  */
 
+export const updatePageParameter = (page: string) => {
+    const existedFilters = initFilters();
+    const newFilters = { ...existedFilters, page };
+    updateURLParams(newFilters);
+};
+
 /* PARAMETREYİ GÜNCELLE */
 export const updateFilter = (
     key: string,
@@ -110,7 +116,16 @@ export const updateFilter = (
 };
 /*  */
 
-/* PARAMETREYİ SİL */
+// PARAMETREYİ GETİR
+export const removeParameter = (key: string) => {
+    const existedFilters = initFilters();
+    const newFilters = { ...existedFilters };
+    delete newFilters[key];
+    updateURLParams(newFilters);
+};
+/*  */
+
+/* PARAMETRENİN DEĞERİNİ SİL */
 export const removeFilter = (key: string, value: string) => {
     const existedFilters = initFilters();
     const newFilters = { ...existedFilters };

@@ -1,8 +1,8 @@
 import { css, keyframes, styled } from "styled-components";
-import { IKindTypes, ISizeTypes, KindTypes, SizeTypes } from "@/types";
+import { ISizeTypes, IStyleKindTypes, KindTypes, SizeTypes } from "@/types";
 import { device } from "@/styles/Breakpoints";
 
-const variantHandler = ({ $kind }: IKindTypes) => {
+const variantHandler = ({ $kind }: IStyleKindTypes) => {
     switch ($kind) {
         case KindTypes.SECONDARY:
             return css`
@@ -108,7 +108,7 @@ export const CloseBtn = styled.button.attrs({ type: "button" })`
     transition: all 0.3s ease;
 `;
 
-export const ModalWrapper = styled.div<IKindTypes>`
+export const ModalWrapper = styled.div<IStyleKindTypes>`
     position: fixed;
     top: 0;
     left: 0;
