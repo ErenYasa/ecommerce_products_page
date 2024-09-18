@@ -14,7 +14,11 @@ After these steps, the application will start running at http://localhost:3005. 
 
 By using styled-components, I ran the design process in a creative and dynamic way. I tried to present a user interface focused on user experience (UX). To make the project adaptable to style and design changes easily, I created a centralized structure and separated the colors into three main options: "primary," "secondary," and "dark." You can easily switch by giving "kind (color type)" to components (button, checkbox, etc.).
 
+![](https://github.com/user-attachments/assets/d6bb0e4f-aa67-4f03-ba5e-b467a465b48c)
+
 Additionally, by assigning "variant (button type)" as "default," "outline," or "ghost" to the button component, you can take advantage of button variety according to the situation.
+
+![](https://github.com/user-attachments/assets/d17401ed-6534-417a-9367-a09696af3388)
 
 Moreover, you can adjust the sizes of components like checkbox and toggle switch by passing the "size" prop. I managed all these values by storing them in a global type (types/index.ts) file to make them easily manageable. In this way, you can see all the types in the project and easily change the theme colors or component appearances.
 
