@@ -31,7 +31,7 @@ import {
 import PagePagination from "../Pagination";
 import ProductCount from "../ProductCount";
 
-export default function Products() {
+export function Products() {
     const isMedium = useMediaQuery(
         `(min-width: ${ScreenSizes.SM}) and (max-width: 1023px)`
     );
