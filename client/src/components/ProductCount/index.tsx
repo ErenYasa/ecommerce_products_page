@@ -1,9 +1,14 @@
 import { Count, ProductCountStyle } from "./styled";
+import { ProductCountProps } from "./productCount.defs";
 
-export default function ProductCount() {
+export default function ProductCount({ count }: ProductCountProps) {
     return (
         <ProductCountStyle>
-            <Count>200</Count>products are listed.
+            {count > 0 && (
+                <>
+                    <Count>{count}</Count>products are listed.
+                </>
+            )}
         </ProductCountStyle>
     );
 }

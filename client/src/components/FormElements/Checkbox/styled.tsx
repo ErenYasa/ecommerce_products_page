@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { IKindTypesAndTheme, KindTypes } from "@/types";
+import { IStyleKindTypesAndTheme, KindTypes } from "@/types";
 import { CheckboxStyle } from "./Checkbox.defs";
 
-const variantHandler = ({ $kind, theme }: IKindTypesAndTheme) => css`
+const variantHandler = ({ $kind, theme }: IStyleKindTypesAndTheme) => css`
     &:hover {
         ${Checkmark} {
             border-color: ${theme.colors[$kind || KindTypes.PRIMARY]};

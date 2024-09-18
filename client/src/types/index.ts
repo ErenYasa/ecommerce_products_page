@@ -58,18 +58,37 @@ export interface ISizeTypes {
     size?: "sm" | "std" | "lg";
 }
 
+export interface IStyleVariantTypes {
+    $variant?: "default" | "outline" | "ghost";
+}
+export interface IKindTypes {
+    kind?: "primary" | "secondary" | "dark";
+}
+export interface IStyleKindTypes {
+    $kind?: "primary" | "secondary" | "dark";
+}
+
 export interface IVariantAndKindTypes extends IVariantTypes, IKindTypes {}
+
+export interface IStyleVariantAndKindTypes
+    extends IStyleVariantTypes,
+        IStyleKindTypes {}
+export interface IStyleGlobalVariantHandler
+    extends IStyleVariantTypes,
+        IStyleKindTypes {
+    theme: DefaultTheme;
+}
 
 export interface IGlobalVariantHandler extends IVariantTypes, IKindTypes {
     theme: DefaultTheme;
 }
 
-export interface IKindTypesAndTheme extends IKindTypes {
+export interface IStyleKindTypesAndTheme extends IStyleKindTypes {
     theme: DefaultTheme;
 }
 
-export interface IKindTypesAndSize extends IKindTypes {
-    size?: string;
+export interface IStyleKindTypesAndSize extends IStyleKindTypes {
+    $size?: string;
 }
 /*  */
 

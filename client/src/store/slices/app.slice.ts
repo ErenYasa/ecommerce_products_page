@@ -18,6 +18,9 @@ const initialState: IAppState = {
         stock: "off",
         sort: "all",
     },
+    currentPage: 0,
+    itemOffset: 0,
+    endOffset: 8,
 };
 
 export const appSlice: Slice<IAppState> = createSlice({
@@ -52,6 +55,15 @@ export const appSlice: Slice<IAppState> = createSlice({
         ) => {
             state.activeFilters = payload;
         },
+        setCurrentPage: (state, { payload }: PayloadAction<number>) => {
+            state.currentPage = payload;
+        },
+        setItemOffset: (state, { payload }: PayloadAction<number>) => {
+            state.itemOffset = payload;
+        },
+        setEndOffset: (state, { payload }: PayloadAction<number>) => {
+            state.endOffset = payload;
+        },
     },
 });
 
@@ -62,6 +74,9 @@ export const {
     setActiveProducts,
     setFilterItems,
     setActiveFilters,
+    setCurrentPage,
+    setItemOffset,
+    setEndOffset,
 } = appSlice.actions;
 
 export default appSlice.reducer;

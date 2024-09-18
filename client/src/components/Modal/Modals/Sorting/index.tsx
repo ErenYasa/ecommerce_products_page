@@ -5,7 +5,7 @@ import { Body } from "./styled";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setActiveFilters } from "@/store/slices/app.slice";
 import { isInitFilter, updateFilter } from "@/helpers/filterHelpers";
-import { ModalNames } from "@/types";
+import { KindTypes, ModalNames } from "@/types";
 import { closeModal } from "@/store/slices/modal.slice";
 import { sortingItems } from "@/config";
 
@@ -18,7 +18,7 @@ export default function SortingModal() {
         updateFilter("sort", e.target.value);
         /*  */
 
-        /* ACTIVE FILTERS UPDATE IN THE STORE */
+        /* STORE'DA AKTİF OLAN FİLTRELERİ GÜNCELLE */
         dispatch(setActiveFilters({ ...activeFilters, sort: e.target.value }));
         /*  */
 
@@ -36,6 +36,7 @@ export default function SortingModal() {
                         value={value}
                         text={text}
                         textOrder="before"
+                        kind={KindTypes.DARK}
                         onChange={onChangeHandler}
                         defaultChecked={isInitFilter("sort", value)}
                         key={i}

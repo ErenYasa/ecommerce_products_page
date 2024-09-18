@@ -38,13 +38,6 @@ export const theme: DefaultTheme = {
             bold: 600,
         },
     },
-    paddings: {
-        container: "1.5rem",
-        pageTop: "3rem",
-    },
-    margins: {
-        pageTop: "3rem",
-    },
     borderRadius: {
         xs: "0.3rem",
         sm: "0.5rem",

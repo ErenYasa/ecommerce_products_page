@@ -6,10 +6,10 @@ import { ScreenSizeTypes } from "@/types";
 export const LayoutStyle = styled.main`
     ${MContainer(ScreenSizeTypes.XL)}
     position: relative;
-    height: 100%;
-    padding: 3rem 1.5rem 1.5rem;
+    padding: 3rem 1.5rem;
+
     @media ${device.sm} {
-        padding: 4rem;
+        padding: 4rem 4rem 6rem;
     }
 `;
 

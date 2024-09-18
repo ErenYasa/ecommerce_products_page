@@ -11,4 +11,7 @@ export interface IAppState {
     activeFilters: {
         [key: string]: any;
     };
+    currentPage: number;
+    itemOffset: number;
+    endOffset: number;
 }

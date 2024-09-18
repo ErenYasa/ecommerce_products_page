@@ -13,8 +13,10 @@ export const ProductCardStyle = styled.a`
     border: 0.1rem solid ${({ theme }) => theme.colors.placeholderGrey};
     border-radius: ${({ theme }) => theme.borderRadius.sm};
     cursor: pointer;
+
     @media ${device.lg} {
         justify-content: unset;
+
         &:not(:hover) {
             ${Button} {
                 height: 0;
@@ -27,6 +29,7 @@ export const ProductCardStyle = styled.a`
                     margin 0.2s;
             }
         }
+
         &:hover {
             ${Button} {
                 display: flex;
@@ -55,6 +58,7 @@ export const ImageContainer = styled.figure`
     padding-top: 118%;
     background: ${({ theme }) => theme.colors.placeholderGrey};
     overflow: hidden;
+
     img {
         position: absolute;
         inset: 0;
@@ -67,6 +71,7 @@ export const ImageContainer = styled.figure`
 
 export const Body = styled.div`
     margin-bottom: 1rem;
+
     @media ${device.lg} {
         padding-bottom: 4.75rem;
     }
@@ -109,6 +114,7 @@ export const ColorCircle = styled.div<{ color: string }>`
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 50%;
+    border: 0.1rem solid ${({ theme }) => theme.colors.placeholderGrey};
     background-color: ${({ color }) => color};
 `;
 
@@ -123,6 +129,7 @@ export const Footer = styled.div`
     flex-direction: column;
     gap: 0.5rem;
     margin-top: auto;
+
     @media ${device.lg} {
         position: absolute;
         right: 0;
@@ -136,6 +143,7 @@ export const Footer = styled.div`
             box-shadow: 0 -0.1rem 1.1rem -0.6rem black;
         }
     }
+
     ${Button} {
         padding-block: 0.53rem;
     }

@@ -11,7 +11,7 @@ export default function Switch(props: CheckboxProps) {
     return (
         <Label
             $kind={props.kind || KindTypes.PRIMARY}
-            size={props.size}
+            $size={props.size}
             className={classes}
         >
             <Text>{props.text}</Text>
